@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "django-fastapi-messenger"
+version = "0.1.0"
+description = ""
+authors = ["Derek Bruckner <dbrucknr@umich.edu>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.7"
+fastapi = "^0.104.1"
+pydantic = "^2.5.2"
+pydantic-settings = "^2.1.0"
+uvloop = "^0.19.0"
+httptools = "^0.6.1"
+uvicorn = "^0.24.0.post1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
