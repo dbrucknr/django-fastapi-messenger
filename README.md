@@ -17,6 +17,21 @@
 17. `python manage.py makemigrations`
 18. `python manage.py migrate`
 19. Register new models in admin
+20. Begin modifying `asgi.py` to support fastapi + uvicorn libs
+21. Fix staticfile issue for admin panel since we are switching to uvicorn
+    - Add `STATIC_ROOT = os.path.join(BASE_DIR, 'static', )` to `settings.py`
+    - Add
+    ```
+            from django.conf.urls.static import static
+            from django.conf import settings
+
+            urlpatterns = [.
+            .....] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    ```
+    into `server/urls.py`
+22. Run: `python manage.py collectstatic --noinput`
+23. run server with `uvicorn server.asgi:application --reload`
+24. Verify Django app has been mounted by visiting: `http://127.0.0.1:8000/admin/`
 
 
 ### Helpful Tips
