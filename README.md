@@ -31,7 +31,12 @@
     into `server/urls.py`
 22. Run: `python manage.py collectstatic --noinput`
 23. run server with `uvicorn server.asgi:application --reload`
-24. Verify Django app has been mounted by visiting: `http://127.0.0.1:8000/admin/`
+24. Verify Django app has been mounted by visiting (static assets should work): `http://127.0.0.1:8000/admin/`
+25. Begin building API system in conversations - new folder / router
+26. register the new api router in `asgi.py`
+27. Verify new GET routes in browser:
+    - `http://localhost:8000/api/conversations`
+    - `http://localhost:8000/api/conversations/1`
 
 
 ### Helpful Tips

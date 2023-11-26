@@ -25,6 +25,11 @@ apps.populate(settings.INSTALLED_APPS)
 # FastAPI Settings
 application = FastAPI(openapi_url="/api/openapi.json", docs_url="/api/docs")
 
+from conversations.api.router import conversations_api
+
+# /api/conversations
+application.include_router(router=conversations_api, prefix="/api")
+
 application.mount(path="/", app=django_app)
 application.mount("/static", StaticFiles(directory="static"), name="static")
 # application.mount("/media", StaticFiles(directory="media"), name="media")
