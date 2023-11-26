@@ -11,3 +11,18 @@
 11. Register User changes in admin.py
 12. Create a superuser:  `python manage.py createsuperuser`
 13. Visit: http://127.0.0.1:8000/admin/ and log in.
+
+
+### Helpful Tips
+- Did you accidently commit file(s) you didn't intend to commit?
+
+Add them to the `.gitignore` file and then:
+
+### Remove the files from the index (not the actual files in the working copy)
+$ git rm -r --cached .
+
+# Add these removals to the Staging Area...
+$ git add .
+
+### ...and commit them!
+$ git commit -m "Clean up ignored files"
