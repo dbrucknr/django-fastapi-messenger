@@ -13,6 +13,10 @@
 13. Visit: http://127.0.0.1:8000/admin/ and log in to confirm changes worked.
 14. `python manage.py startapp conversations`
 15. Add new conversations app to `settings.py`
+16. Build new conversations models
+17. `python manage.py makemigrations`
+18. `python manage.py migrate`
+19. Register new models in admin
 
 
 ### Helpful Tips

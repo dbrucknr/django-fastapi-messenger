@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     # Local Apps
     'users.apps.UsersConfig',
+    'conversations.apps.ConversationsConfig',
 ]
 
 MIDDLEWARE = [
