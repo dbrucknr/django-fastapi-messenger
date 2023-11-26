@@ -23,7 +23,7 @@ class Conversation(models.Model):
 
 class Message(models.Model):
     user = models.ForeignKey(to=get_user_model(), on_delete=models.CASCADE)
-    room = models.ForeignKey(to=Conversation, on_delete=models.CASCADE)
+    conversation = models.ForeignKey(to=Conversation, on_delete=models.CASCADE)
     content = models.CharField(max_length=512)
     timestamp = models.DateTimeField(auto_now_add=True)
 
