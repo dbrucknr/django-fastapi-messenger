@@ -10,6 +10,16 @@ class AsyncManager(models.Manager):
     alast_func = sync_to_async(models.Manager.last)
     alatest_func = sync_to_async(models.Manager.latest)
 
+    aselect_related_func = sync_to_async(models.Manager.select_related)
+    aprefetch_related = sync_to_async(list)(models.Manager.prefetch_related)
+
+    async def async_select_related(self, *args, **kwargs):
+        return await self.aselect_related_func(*args, **kwargs)
+
+    # This kinda works
+    async def async_prefetch_related(self, *args, **kwargs):
+        return await sync_to_async(list)(self.prefetch_related(*args, **kwargs))
+
     async def aget(self, *args, **kwargs):
         return await self.aget_func(*args, **kwargs)
 

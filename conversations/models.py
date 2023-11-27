@@ -14,7 +14,7 @@ class Conversation(models.Model):
 
 
 class Message(models.Model):
-    sender = models.ForeignKey(to=get_user_model(), on_delete=models.CASCADE)
+    sender = models.ForeignKey(to=get_user_model(), on_delete=models.CASCADE,  related_name='sent_messages')
     conversation = models.ForeignKey(to=Conversation, on_delete=models.CASCADE, related_name='messages')
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
@@ -22,4 +22,4 @@ class Message(models.Model):
     objects = AsyncManager()
 
     def __str__(self):
-        return f'{self.sender.username}: {self.content} [{self.timestamp}]'
+        return f'{self.sender} {self.content} [{self.timestamp}]'
