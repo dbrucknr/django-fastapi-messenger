@@ -1,0 +1,25 @@
+from django.db import models
+from django.contrib.auth import get_user_model
+
+from conversations.managers import AsyncManager
+
+class Conversation(models.Model):
+    participants = models.ManyToManyField(to=get_user_model(), related_name='conversations')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    objects = AsyncManager()
+
+    def __str__(self):
+        return f'{self.id}'
+
+
+class Message(models.Model):
+    sender = models.ForeignKey(to=get_user_model(), on_delete=models.CASCADE,  related_name='sent_messages')
+    conversation = models.ForeignKey(to=Conversation, on_delete=models.CASCADE, related_name='messages')
+    content = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    objects = AsyncManager()
+
+    def __str__(self):
+        return f'{self.sender} {self.content} [{self.timestamp}]'
